@@ -725,12 +725,6 @@ const ServicesSection = () => {
 }
 
 const StaffMarqueeSection = () => {
-  const [isPaused, setIsPaused] = useState(false)
-  const [dragVelocity, setDragVelocity] = useState(0)
-  const controls = useAnimation()
-  const containerRef = useRef(null)
-  const x = useMotionValue(0)
-
   const staffMembers = [
     {
       id: 1,
@@ -793,96 +787,30 @@ const StaffMarqueeSection = () => {
   // Duplicate staff for seamless loop
   const duplicatedStaff = [...staffMembers, ...staffMembers]
 
-  useEffect(() => {
-    if (!isPaused && dragVelocity === 0) {
-      // Auto-scroll animation
-      controls.start({
-        x: [0, -100 * staffMembers.length],
-        transition: {
-          duration: 30,
-          ease: "linear",
-          repeat: Number.POSITIVE_INFINITY,
-        },
-      })
-    }
-  }, [isPaused, dragVelocity, controls, staffMembers.length])
-
-  const handleDragStart = () => {
-    setIsPaused(true)
-    controls.stop()
-  }
-
-  const handleDragEnd = (event, info) => {
-    const velocity = info.velocity.x
-    setDragVelocity(velocity)
-
-    // Apply momentum with gradual slowdown
-    controls.start({
-      x: x.get() + velocity * 0.1,
-      transition: {
-        type: "spring",
-        damping: 20,
-        stiffness: 100,
-        onComplete: () => {
-          setDragVelocity(0)
-          setIsPaused(false)
-        },
-      },
-    })
-  }
-
-  const handleMouseEnter = () => {
-    setIsPaused(true)
-    controls.stop()
-  }
-
-  const handleMouseLeave = () => {
-    if (dragVelocity === 0) {
-      setIsPaused(false)
-    }
-  }
-
   return (
-    <section className="py-12 sm:py-16 ">
+    <section className="py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-4"
-          >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-4">
             Meet Our Expert Team
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg sm:text-xl text-gray-600"
-          >
+          </h2>
+          <p className="text-lg sm:text-xl text-gray-600">
             Dedicated professionals committed to your English learning success
-          </motion.p>
+          </p>
         </div>
 
         {/* Staff Marquee */}
-        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <motion.div
-            ref={containerRef}
-            className="flex space-x-4 sm:space-x-8 cursor-grab active:cursor-grabbing"
-            animate={controls}
-            drag="x"
-            dragConstraints={{ left: -100 * staffMembers.length, right: 100 }}
-            dragElastic={0.1}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-            style={{ x }}
+        <div className="relative group">
+          <div
+            className="flex w-max animate-marquee gap-4 sm:gap-8"
+            style={{ animationPlayState: 'running' }}
+            onMouseEnter={e => { e.currentTarget.style.animationPlayState = 'paused' }}
+            onMouseLeave={e => { e.currentTarget.style.animationPlayState = 'running' }}
           >
             {duplicatedStaff.map((staff, index) => (
-              <motion.div
+              <div
                 key={`${staff.id}-${index}`}
-                className="flex-shrink-0 w-64 sm:w-80"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
+                className="flex-shrink-0 w-64 sm:w-80 hover:scale-105 transition-transform duration-300"
               >
                 <div className="rounded-3xl p-6 sm:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:border-yellow-400/30">
                   {/* Staff Image */}
@@ -905,20 +833,16 @@ const StaffMarqueeSection = () => {
                       <span className="text-xs sm:text-sm text-gray-700">{staff.specialization}</span>
                     </div>
                   </div>
-
-                
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
-
-         
+          </div>
         </div>
 
         {/* Interaction Hint */}
         <div className="text-center mt-6 sm:mt-8">
           <p className="text-xs sm:text-sm text-gray-500">
-            {isPaused ? "Hover to pause • Drag to control" : "Auto-scrolling • Hover to pause • Drag to control"}
+            Hover to pause • Infinite auto-scrolling
           </p>
         </div>
       </div>
