@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
 import { motion, AnimatePresence, useMotionValue, useAnimation } from "framer-motion"
 import {
   ChevronDown,
@@ -326,10 +327,13 @@ const NewsSlider = () => {
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
             <div className="relative w-full h-full">
-              <img
+              <Image
                 src={newsItems[currentSlide].image || "/placeholder.svg"}
                 alt={newsItems[currentSlide].title}
+                width={800}
+                height={400}
                 className="w-full h-full object-cover"
+                priority
               />
               <div className="absolute inset-0 bg-black/50" />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -816,9 +820,11 @@ const StaffMarqueeSection = () => {
                   {/* Staff Image */}
                   <div className="relative mb-4 sm:mb-6">
                     <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto relative">
-                      <img
+                      <Image
                         src={staff.image || "/placeholder.svg"}
                         alt={staff.name}
+                        width={120}
+                        height={120}
                         className="w-full h-full rounded-full object-cover border-4 border-yellow-400"
                       />
                       <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-yellow-400/20 to-transparent"></div>
