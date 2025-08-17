@@ -471,7 +471,7 @@ const AboutUsSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto"
           >
-            From humble beginnings to global recognition, discover how we've transformed English learning for thousands
+            From humble beginnings to global recognition, discover how we&apos;ve transformed English learning for thousands
             of students worldwide.
           </motion.p>
         </div>
@@ -640,7 +640,7 @@ const ServicesSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            Discover our comprehensive range of English learning services designed to meet every student's unique needs
+            Discover our comprehensive range of English learning services designed to meet every student&apos;s unique needs
             and goals.
           </motion.p>
         </div>
