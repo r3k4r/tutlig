@@ -190,20 +190,6 @@ export const NewsSlider = () => {
           />
         ))}
       </div>
-
-      {/* Direction Toggle Button - Hidden on mobile */}
-      <button
-        onClick={toggleDirection}
-        className="hidden sm:block absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white px-4 py-2 rounded-full text-sm transition-all duration-200"
-      >
-        {direction === 1 ? "← Auto" : "Auto →"}
-      </button>
-
-      {/* Auto-play Indicator - Hidden on mobile */}
-      <div className="hidden sm:flex absolute top-4 left-4 items-center space-x-2">
-        <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? "bg-green-400" : "bg-red-400"}`} />
-        <span className="text-white text-sm">{isAutoPlaying ? "Auto-playing" : "Paused"}</span>
-      </div>
     </div>
   )
 }

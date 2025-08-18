@@ -69,7 +69,7 @@ export default function Navbar (){
           {/* Logo */}
           <div className="flex-shrink-0">
             <motion.div whileHover={{ scale: 1.05 }} className="text-yellow-400 font-bold text-xl">
-              Touring Institute
+              Tutelage
             </motion.div>
           </div>
 

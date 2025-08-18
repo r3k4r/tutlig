@@ -69,8 +69,8 @@ export const StaffMarqueeSection = () => {
 
   return (
     <section className="py-12 sm:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-12">
+      <div className="w-full ">
+        <div className="text-center mb-8 sm:mb-12 mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-4">
             Meet Our Expert Team
           </h2>
@@ -80,9 +80,9 @@ export const StaffMarqueeSection = () => {
         </div>
 
         {/* Staff Marquee */}
-        <div className="relative group">
+        <div className="overflow-hidden relative group">
           <div
-            className="flex w-max animate-marquee gap-4 sm:gap-8"
+            className="flex py-6 w-max animate-marquee gap-4 sm:gap-8"
             style={{ animationPlayState: 'running' }}
             onMouseEnter={e => { e.currentTarget.style.animationPlayState = 'paused' }}
             onMouseLeave={e => { e.currentTarget.style.animationPlayState = 'running' }}

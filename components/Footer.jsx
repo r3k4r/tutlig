@@ -44,7 +44,7 @@ export const Footer = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <h3 className="text-2xl sm:text-3xl font-bold text-yellow-400 mb-4 sm:mb-6">Touring Institute</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-yellow-400 mb-4 sm:mb-6">Tutelage</h3>
                 <p className="text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">
                   Empowering students worldwide with innovative English learning solutions. Join thousands who have
                   achieved their language goals with us.
@@ -177,7 +177,7 @@ export const Footer = () => {
               transition={{ duration: 0.6 }}
               className="text-gray-400 text-sm sm:text-base text-center sm:text-left"
             >
-              © {currentYear} Touring Institute. All rights reserved.
+              © {currentYear} Tutelage. All rights reserved.
             </motion.p>
 
             <motion.div

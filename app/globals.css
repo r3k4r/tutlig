@@ -17,7 +17,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color palette for Touring Institute theme */
+  /* Updated color palette for Tutelage theme */
   --background: oklch(1 0 0); /* White */
   --foreground: oklch(0.145 0 0); /* Black */
   --card: oklch(1 0 0);

@@ -14,7 +14,7 @@ export const AboutUsSection = () => {
       year: "2010",
       title: "Foundation",
       description:
-        "Touring Institute was established with a vision to revolutionize English learning through innovative teaching methods.",
+        "Tutelage was established with a vision to revolutionize English learning through innovative teaching methods.",
       icon: <BookOpen className="w-6 h-6" />,
     },
     {
