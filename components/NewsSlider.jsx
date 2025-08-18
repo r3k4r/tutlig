@@ -19,7 +19,7 @@ export const NewsSlider = () => {
       id: 1,
       title: "New IELTS Preparation Course Launched",
       description: "Join our comprehensive IELTS preparation program with expert instructors and proven strategies.",
-      image: "/placeholder.svg?height=400&width=800",
+      image: "/news.jpg",
       date: "March 15, 2024",
     },
     {
@@ -27,28 +27,28 @@ export const NewsSlider = () => {
       title: "Student Success: 95% Pass Rate Achievement",
       description:
         "Our students continue to excel with outstanding results in international English proficiency tests.",
-      image: "/placeholder.svg?height=400&width=800",
+      image: "/news.jpg",
       date: "March 10, 2024",
     },
     {
       id: 3,
       title: "Online Learning Platform Now Available",
       description: "Access our courses from anywhere with our new interactive online learning platform.",
-      image: "/placeholder.svg?height=400&width=800",
+      image: "/news.jpg",
       date: "March 5, 2024",
     },
     {
       id: 4,
       title: "Corporate English Training Programs",
       description: "Enhance your team's communication skills with our specialized corporate training solutions.",
-      image: "/placeholder.svg?height=400&width=800",
+      image: "/news.jpg",
       date: "February 28, 2024",
     },
     {
       id: 5,
       title: "Summer Intensive Courses Registration Open",
       description: "Accelerate your English learning with our intensive summer programs starting June 2024.",
-      image: "/placeholder.svg?height=400&width=800",
+      image: "/news.jpg",
       date: "February 20, 2024",
     },
   ]

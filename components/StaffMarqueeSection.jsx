@@ -10,56 +10,56 @@ export const StaffMarqueeSection = () => {
       id: 1,
       name: "Dr. Sarah Johnson",
       role: "Director & Lead Instructor",
-      image: "/placeholder.svg?height=120&width=120",
+      image: "/staff.jpg",
       specialization: "IELTS & Academic English",
     },
     {
       id: 2,
       name: "Michael Chen",
       role: "Business English Specialist",
-      image: "/placeholder.svg?height=120&width=120",
+      image: "/staff.jpg",
       specialization: "Corporate Training",
     },
     {
       id: 3,
       name: "Emma Rodriguez",
       role: "ESL Coordinator",
-      image: "/placeholder.svg?height=120&width=120",
+      image: "/staff.jpg",
       specialization: "Beginner & Intermediate",
     },
     {
       id: 4,
       name: "David Thompson",
       role: "TOEFL Expert",
-      image: "/placeholder.svg?height=120&width=120",
+      image: "/staff.jpg",
       specialization: "Test Preparation",
     },
     {
       id: 5,
       name: "Lisa Park",
       role: "Conversation Coach",
-      image: "/placeholder.svg?height=120&width=120",
+      image: "/staff.jpg",
       specialization: "Speaking & Pronunciation",
     },
     {
       id: 6,
       name: "James Wilson",
       role: "Academic Writing Tutor",
-      image: "/placeholder.svg?height=120&width=120",
+      image: "/staff.jpg",
       specialization: "Research & Essays",
     },
     {
       id: 7,
       name: "Maria Garcia",
       role: "Online Learning Manager",
-      image: "/placeholder.svg?height=120&width=120",
+      image: "/staff.jpg",
       specialization: "Digital Education",
     },
     {
       id: 8,
       name: "Robert Kim",
       role: "Curriculum Developer",
-      image: "/placeholder.svg?height=120&width=120",
+      image: "/staff.jpg",
       specialization: "Course Design",
     },
   ]
@@ -119,13 +119,6 @@ export const StaffMarqueeSection = () => {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Interaction Hint */}
-        <div className="text-center mt-6 sm:mt-8">
-          <p className="text-xs sm:text-sm text-gray-500">
-            Hover to pause • Infinite auto-scrolling
-          </p>
         </div>
       </div>
     </section>
