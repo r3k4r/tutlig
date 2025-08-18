@@ -152,7 +152,8 @@ export default function Navbar (){
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/95 backdrop-blur-sm border-t border-yellow-400/20"
+            className="md:hidden bg-black/95 backdrop-blur-sm border-t border-yellow-400/20 overflow-y-auto"
+            style={{ maxHeight: 'calc(100dvh - 4rem)' }}
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item, index) => (
