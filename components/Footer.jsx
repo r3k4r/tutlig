@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail,  } from 'lucide-react'
 import { motion } from 'framer-motion'
 
@@ -185,15 +186,15 @@ export const Footer = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex flex-wrap justify-center sm:justify-end space-x-6 text-sm"
             >
-              <a href="/privacy" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
+              <Link href="/privacy" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
                 Privacy Policy
-              </a>
-              <a href="/terms" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
+              </Link>
+              <Link href="/terms" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
                 Terms of Service
-              </a>
-              <a href="/cookies" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
+              </Link>
+              <Link href="/cookies" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
                 Cookie Policy
-              </a>
+              </Link>
             </motion.div>
           </div>
         </div>
