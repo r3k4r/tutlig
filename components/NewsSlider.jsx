@@ -19,7 +19,7 @@ export const NewsSlider = () => {
       id: 1,
       title: "Tutelage collaborated with TESOL Spain one of the most well-known International TESOL Associations",
       description: "Tutelage is proud to announce our collaboration with TESOL Spain, enhancing our commitment to providing top-notch English language education.",
-      image: "/news.jpg",
+      image: "https://www.21kschool.com/gh/wp-content/uploads/sites/33/2022/09/12-Advantages-to-Learning-Online.jpg",
       date: "June 15, 2025",
     },
     {
@@ -27,21 +27,21 @@ export const NewsSlider = () => {
       title: "Register now for this month’s VIP group classes",
       description:
         "Join our exclusive VIP group classes this month to experience personalized English learning with expert instructors.",
-      image: "/news.jpg",
+      image: "https://yeira-panel.s3.amazonaws.com/posts/March2023/Bh0ilVMZUzUxEXJECgks.png",
       date: "July 10, 2025",
     },
     {
       id: 3,
       title: "Your personalized AI tutor is here to help",
       description: "Experience the future of learning with our AI-powered personalized tutor, designed to enhance your English language skills.",
-      image: "/news.jpg",
+      image: "https://www.shutterstock.com/image-vector/online-learning-home-during-outbreak-260nw-1747453175.jpg",
       date: "Aug 5, 2025",
     },
     {
       id: 4,
       title: "Tutelage now operates its services both locally and globally",
       description: "Tutelage expands its reach! We are now offering our English language services both locally and globally, making quality education accessible to everyone.",
-      image: "/news.jpg",
+      image: "https://thumbs.dreamstime.com/b/remote-learning-virtual-class-kids-teleconference-online-education-stay-home-watching-female-teacher-book-points-to-flipchart-196343666.jpg",
       date: "February 28, 2025",
     },
     {
