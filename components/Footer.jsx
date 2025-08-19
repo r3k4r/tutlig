@@ -31,33 +31,34 @@ export const Footer = () => {
   ]
 
   return (
-    <footer className="bg-black text-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <footer className="bg-black text-white relative overflow-hidden border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative">
         {/* Main Footer Content */}
-        <div className="py-12 sm:py-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+        <div className="py-14 sm:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 lg:gap-20">
             {/* Institute Info */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 flex flex-col justify-between h-full">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <Image className='sm:mb-6 mb-4' src={'/white.svg'} alt='logo' width={150} height={60} />
-                <p className="text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">
-                  Empowering students worldwide with innovative English learning solutions. Join thousands who have
-                  achieved their language goals with us.
+                <div className='flex items-center space-x-4 mb-4'>
+                  <Image className='mb-2' src={'/logo.png'} alt='logo' width={56} height={56} />
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white">Tutelage</h3>
+                </div>
+                <p className="text-gray-400 mb-6 leading-relaxed text-sm sm:text-base max-w-xs">
+                  Empowering students worldwide with innovative English learning solutions.<br />Join thousands who have achieved their language goals with us.
                 </p>
-
                 {/* Social Media Links */}
-                <div className="flex space-x-4">
+                <div className="flex space-x-3 mt-2">
                   {socialLinks.map((social) => (
                     <motion.a
                       key={social.name}
                       href={social.href}
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-gray-800 hover:bg-yellow-400 hover:text-black p-3 rounded-full transition-all duration-300"
+                      className="bg-gray-800 hover:bg-yellow-400 hover:text-black p-2.5 rounded-full transition-all duration-300 shadow-sm"
                       aria-label={social.name}
                       target="_blank"
                     >
@@ -68,7 +69,7 @@ export const Footer = () => {
               </motion.div>
             </div>
 
-            {/* Quick Links */}
+            {/* Quick Links (section intentionally left as comment for future use)
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -90,10 +91,10 @@ export const Footer = () => {
                   ))}
                 </ul>
               </motion.div>
-            </div>
+            </div> */}
 
             {/* Courses */}
-            <div>
+            <div className="md:col-span-1">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -117,7 +118,7 @@ export const Footer = () => {
             </div>
 
             {/* Contact Info */}
-            <div>
+            <div className="md:col-span-1">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -132,19 +133,23 @@ export const Footer = () => {
                       <p className="text-gray-300 text-sm sm:text-base">Sulaimaniyah - Kurdistan Region</p>
                     </div>
                   </div>
-
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-yellow-400 flex-shrink-0" />
-                    <a
-                      href="tel:+1234567890"
-                      className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base"
-                    >
-                     (964+) 07501534240
-                      <br />
-                     (964+) 07701946364
-                    </a>
+                    <div className="flex flex-col">
+                      <a
+                        href="tel:+9647501534240"
+                        className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base"
+                      >
+                        (964+) 07501534240
+                      </a>
+                      <a
+                        href="tel:+9647701946364"
+                        className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base"
+                      >
+                        (964+) 07701946364
+                      </a>
+                    </div>
                   </div>
-
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0" />
                     <a
@@ -155,7 +160,6 @@ export const Footer = () => {
                     </a>
                   </div>
                 </div>
-
                 {/* Office Hours */}
                 <div className="mt-6">
                   <h5 className="text-base sm:text-lg font-medium text-white mb-3">Office Hours</h5>
@@ -171,22 +175,21 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 py-6 sm:py-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+        <div className="border-t border-gray-800 py-5 sm:py-7">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="text-gray-400 text-sm sm:text-base text-center sm:text-left"
+              className="text-gray-500 text-xs sm:text-sm text-center md:text-left"
             >
               © {currentYear} Tutelage. All rights reserved.
             </motion.p>
-
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-wrap justify-center sm:justify-end space-x-6 text-sm"
+              className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-xs sm:text-sm"
             >
               <Link href="/privacy" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
                 Privacy Policy
