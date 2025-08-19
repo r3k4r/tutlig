@@ -11,30 +11,30 @@ export const AboutUsSection = () => {
 
   const timelineItems = [
     {
-      year: "2010",
+      year: "2022",
       title: "Foundation",
       description:
         "Tutelage was established with a vision to revolutionize English learning through innovative teaching methods.",
       icon: <BookOpen className="w-6 h-6" />,
     },
     {
-      year: "2015",
-      title: "Digital Transformation",
+      year: "",
+      title: "Innovation",
       description:
-        "Launched our first online learning platform, making quality English education accessible worldwide.",
+        "Tutelage is the first Language institute to implement a full scale AI tool for students.",
       icon: <Globe className="w-6 h-6" />,
     },
     {
-      year: "2018",
-      title: "Recognition",
-      description: "Achieved international accreditation and recognition for excellence in English language education.",
+      year: "",
+      title: "Expansion",
+      description: "Tutelage hired many local talents and fresh graduates with a focus on creative female instructors.",
       icon: <Award className="w-6 h-6" />,
     },
     {
-      year: "2024",
-      title: "Innovation Leader",
+      year: "",
+      title: "Building Reputation",
       description:
-        "Today, we continue to lead with cutting-edge teaching methods and personalized learning experiences.",
+        "Tutelage is among the most reputable language institutes with a massive success rate.",
       icon: <Target className="w-6 h-6" />,
     },
   ]
@@ -56,7 +56,7 @@ export const AboutUsSection = () => {
             transition={{ duration: 0.6 }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 sm:mb-6"
           >
-            Our Journey of Excellence
+            Pioneers of Excellence
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -64,8 +64,7 @@ export const AboutUsSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto"
           >
-            From humble beginnings to global recognition, discover how we&apos;ve transformed English learning for thousands
-            of students worldwide.
+            Join Tutelage and let your language skills become your super power
           </motion.p>
         </div>
 
@@ -97,7 +96,7 @@ export const AboutUsSection = () => {
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 mb-2">
-                      <span className="text-xl sm:text-2xl font-bold text-yellow-600">{item.year}</span>
+                      {item.year && <span className="text-xl sm:text-2xl font-bold text-yellow-600">{item.year}</span>}
                       <h3 className="text-lg sm:text-xl font-semibold text-black">{item.title}</h3>
                     </div>
                     <p className="text-sm sm:text-base text-gray-600">{item.description}</p>
@@ -136,8 +135,8 @@ export const AboutUsSection = () => {
                 whileHover={{ scale: 1.05 }}
                 className="bg-white p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-100"
               >
-                <div className="text-2xl sm:text-3xl font-bold text-yellow-600 mb-2">10,000+</div>
-                <div className="text-sm sm:text-base text-gray-600">Students Taught</div>
+                <div className="text-2xl sm:text-3xl font-bold text-yellow-600 mb-2">3000+</div>
+                <div className="text-sm sm:text-base text-gray-600">Students</div>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}

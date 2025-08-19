@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail,  } from 'lucide-react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -17,18 +18,16 @@ export const Footer = () => {
   ]
 
   const courses = [
-    { name: "IELTS Preparation", href: "/courses/ielts" },
-    { name: "TOEFL Preparation", href: "/courses/toefl" },
-    { name: "Business English", href: "/courses/business" },
-    { name: "Academic Writing", href: "/courses/writing" },
-    { name: "ESL Programs", href: "/courses/esl" },
+    { name: "General English", href: "/generalenglish" },
+    { name: "Academic English", href: "/academicenglish" },
+    { name: "Business English", href: "/businessbnglish" },
+    { name: "Preparation Test", href: "/preparationtest" },
+    { name: "ESP", href: "/esp" },
   ]
 
   const socialLinks = [
-    { name: "Facebook", icon: <Facebook className="w-5 h-5" />, href: "#" },
-    { name: "Twitter", icon: <Twitter className="w-5 h-5" />, href: "#" },
-    { name: "Instagram", icon: <Instagram className="w-5 h-5" />, href: "#" },
-    { name: "LinkedIn", icon: <Linkedin className="w-5 h-5" />, href: "#" },
+    { name: "Facebook", icon: <Facebook className="w-5 h-5" />, href: "https://www.facebook.com/share/1EXoYc3xG4/" },
+    { name: "Instagram", icon: <Instagram className="w-5 h-5" />, href: "https://www.instagram.com/tutelage.esl?igsh=MWhhZmhlZzJ1MTB2ZA==" },
   ]
 
   return (
@@ -44,7 +43,7 @@ export const Footer = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <h3 className="text-2xl sm:text-3xl font-bold text-yellow-400 mb-4 sm:mb-6">Tutelage</h3>
+                <Image className='sm:mb-6 mb-4' src={'/white.svg'} alt='logo' width={150} height={60} />
                 <p className="text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">
                   Empowering students worldwide with innovative English learning solutions. Join thousands who have
                   achieved their language goals with us.
@@ -60,6 +59,7 @@ export const Footer = () => {
                       whileTap={{ scale: 0.95 }}
                       className="bg-gray-800 hover:bg-yellow-400 hover:text-black p-3 rounded-full transition-all duration-300"
                       aria-label={social.name}
+                      target="_blank"
                     >
                       {social.icon}
                     </motion.a>
@@ -128,8 +128,8 @@ export const Footer = () => {
                   <div className="flex items-start space-x-3">
                     <MapPin className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="text-gray-300 text-sm sm:text-base">123 Education Street</p>
-                      <p className="text-gray-300 text-sm sm:text-base">Learning City, LC 12345</p>
+                      <p className="text-gray-300 text-sm sm:text-base">Suli Innovation house</p>
+                      <p className="text-gray-300 text-sm sm:text-base">Sulaimaniyah - Kurdistan Region</p>
                     </div>
                   </div>
 
@@ -139,17 +139,19 @@ export const Footer = () => {
                       href="tel:+1234567890"
                       className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base"
                     >
-                      +1 (234) 567-8900
+                     (964+) 07501534240
+                      <br />
+                     (964+) 07701946364
                     </a>
                   </div>
 
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0" />
                     <a
-                      href="mailto:info@touringinstitute.com"
+                      href="mailto:Info@tutelage.krd"
                       className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base"
                     >
-                      info@touringinstitute.com
+                      Info@tutelage.krd
                     </a>
                   </div>
                 </div>
@@ -158,9 +160,9 @@ export const Footer = () => {
                 <div className="mt-6">
                   <h5 className="text-base sm:text-lg font-medium text-white mb-3">Office Hours</h5>
                   <div className="text-gray-300 text-sm sm:text-base space-y-1">
-                    <p>Monday - Friday: 8:00 AM - 8:00 PM</p>
-                    <p>Saturday: 9:00 AM - 5:00 PM</p>
-                    <p>Sunday: Closed</p>
+                    <p>Sunday : 1:00 PM - 5:00 PM</p>
+                    <p>Tuesday: 1:00 PM - 5:00 PM</p>
+                    <p>Thursday: 1:00 PM - 5:00 PM</p>
                   </div>
                 </div>
               </motion.div>

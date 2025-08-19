@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Menu, X } from 'lucide-react'
+import Image from 'next/image'
 
 
 export default function Navbar (){
@@ -71,7 +72,7 @@ export default function Navbar (){
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center space-x-10">
             <motion.div whileHover={{ scale: 1.05 }} className="text-yellow-400 font-bold text-xl">
-              Tutelage
+              <Image src={'/white.svg'} alt='logo' width={130} height={60} />
             </motion.div>
 
             <div className='flex items-center justify-center gap-2'>
