@@ -70,10 +70,10 @@ export default function Navbar (){
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center space-x-6 md:space-x-10">
-            <motion.div whileHover={{ scale: 1.05 }} className="text-yellow-400 font-bold text-xl">
-              <div className='flex items-center space-x-4'>
-                  <Image src={'/logo.png'} alt='logo' width={40} height={40} />
+          <div className="flex-shrink-0 flex items-center space-x-4 md:space-x-10">
+            <motion.div whileHover={{ scale: 1.05 }} className="text-yellow-400 font-bold text-lg md:text-xl">
+              <div className='flex items-center space-x-2 md:space-x-4'>
+                  <Image src={'/logo.png'} className='w-[35px] h-[35px] md:w-[40px] md:h-[40px]' alt='logo' width={40} height={40} />
                   <h3 className="font-bold text-white">Tutelage</h3>
               </div>
             </motion.div>
