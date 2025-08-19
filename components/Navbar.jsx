@@ -70,7 +70,7 @@ export default function Navbar (){
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center space-x-10">
+          <div className="flex-shrink-0 flex items-center space-x-6 md:space-x-10">
             <motion.div whileHover={{ scale: 1.05 }} className="text-yellow-400 font-bold text-xl">
               <div className='flex items-center space-x-4'>
                   <Image src={'/logo.png'} alt='logo' width={40} height={40} />
