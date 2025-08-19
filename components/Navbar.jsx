@@ -78,7 +78,7 @@ export default function Navbar (){
               </div>
             </motion.div>
 
-            <div className='flex items-center justify-center gap-2'>
+            <div className='flex items-center justify-center gap-2 text-md md:text-lg'>
                 <div className='text-white font-bold cursor-pointer'>
                   <h1>Tutelage</h1>
                 </div>
