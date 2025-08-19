@@ -16,43 +16,45 @@ export default function Navbar (){
       dropdown: null,
     },
     {
-      name: "Tests",
-      href: "/tests",
+      name: "ESL resources ",
+      href: "/eslresources ",
       dropdown: [
-        { name: "IELTS Preparation", href: "/tests/ielts" },
-        { name: "TOEFL Preparation", href: "/tests/toefl" },
-        { name: "Practice Tests", href: "/tests/practice" },
-        { name: "Mock Exams", href: "/tests/mock" },
-      ],
-    },
-    {
-      name: "ESL",
-      href: "/esl",
-      dropdown: [
-        { name: "Beginner Level", href: "/esl/beginner" },
-        { name: "Intermediate Level", href: "/esl/intermediate" },
-        { name: "Advanced Level", href: "/esl/advanced" },
-        { name: "Business English", href: "/esl/business" },
+        { name: "Short Story", href: "/shortstory" },
+        { name: "Blog", href: "/blogs" },
+        { name: "Video", href: "/Video" },
+        { name: "authentic material", href: "/authenticmaterial" },
       ],
     },
     {
       name: "Courses",
       href: "/courses",
       dropdown: [
-        { name: "General English", href: "/courses/general" },
-        { name: "Academic English", href: "/courses/academic" },
-        { name: "Conversation Classes", href: "/courses/conversation" },
-        { name: "Writing Workshop", href: "/courses/writing" },
+        { name: "General English", href: "/generalenglish" },
+        { name: "Academic English", href: "/academicenglish" },
+        { name: "Language Preparation Test", href: "/languagepreparationtest" },
+        { name: "ESP", href: "/esp" },
+        { name: "Business English", href: "/businessenglish" },
+        { name: "Entrepreneurship", href: "/entrepreneurship" },
       ],
     },
-    {
+     {
       name: "Services",
       href: "/services",
       dropdown: [
-        { name: "Private Tutoring", href: "/services/tutoring" },
-        { name: "Group Classes", href: "/services/group" },
-        { name: "Online Learning", href: "/services/online" },
-        { name: "Corporate Training", href: "/services/corporate" },
+        { name: "Group VIP Classes", href: "/vipclasses" },
+        { name: "Private Tutoring", href: "/privatetouring" },
+        { name: "Virtual Classes", href: "/virtualclasses, " },
+        { name: "Physical Classes", href: "/physicalclasses" },
+        { name: "Corporate Training ", href: "/corporatetraining " }
+      ],
+    },
+    {
+      name: "Tutelage Tests ",
+      href: "/tutelagetests ",
+      dropdown: [
+        { name: "Practice Tests", href: "/practicetests" },
+        { name: "IELTS Preparation", href: "/IELTS-preparation" },
+        { name: "Mock exams", href: "/mockexams" },
       ],
     },
     {
@@ -67,10 +69,22 @@ export default function Navbar (){
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 flex items-center space-x-10">
             <motion.div whileHover={{ scale: 1.05 }} className="text-yellow-400 font-bold text-xl">
               Tutelage
             </motion.div>
+
+            <div className='flex items-center justify-center gap-2'>
+                <div className='text-white font-bold cursor-pointer'>
+                  <h1>Tutelage</h1>
+                </div>
+
+                <p className='text-white'>|</p>
+
+                <div className='text-gray-500 font-bold cursor-pointer'>
+                  <h1>Tutelage AI</h1>
+                </div>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
