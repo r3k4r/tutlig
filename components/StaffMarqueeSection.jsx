@@ -1,6 +1,8 @@
 
 'use client'
+
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export const StaffMarqueeSection = () => {
   const sponsors = [
@@ -13,7 +15,13 @@ export const StaffMarqueeSection = () => {
   const duplicatedSponsors = [...sponsors, ...sponsors];
 
   return (
-    <section className="py-12 sm:py-16">
+    <motion.section
+      className="py-12 sm:py-16"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+    >
       <div className="w-full">
         <div className="text-center mb-8 sm:mb-12 mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-4">
@@ -52,6 +60,6 @@ export const StaffMarqueeSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
