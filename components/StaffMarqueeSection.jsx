@@ -5,9 +5,9 @@ import Image from 'next/image'
 export const StaffMarqueeSection = () => {
   const sponsors = [
     { id: 1, image: '/fol.png', alt: 'FOL Sponsor' },
-    { id: 2, image: '/ittt.png', alt: 'ITTT Sponsor' },
-    { id: 3, image: '/orange.png', alt: 'Orange Sponsor' },
-    { id: 4, image: '/tesol.png', alt: 'TESOL Sponsor' },
+    { id: 2, image: '/itt.png', alt: 'ITTT Sponsor' },
+    { id: 3, image: '/orange2.png', alt: 'Orange Sponsor' },
+    { id: 4, image: '/tesol2.png', alt: 'TESOL Sponsor' },
   ];
   // Duplicate for seamless loop
   const duplicatedSponsors = [...sponsors, ...sponsors];
@@ -42,7 +42,7 @@ export const StaffMarqueeSection = () => {
                 <Image
                   src={sponsor.image}
                   alt={sponsor.alt}
-                  width={180}
+                  width={sponsor.id === 1 ? 160 : 180}
                   height={80}
                   className="w-auto h-16 sm:h-20 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                   draggable={false}
