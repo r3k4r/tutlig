@@ -117,7 +117,7 @@ export default function Navbar (){
 
           {/* Desktop Navigation */}
           <div className={`hidden xl:flex xl:items-center xl:justify-between xl:gap-10  ${isRTL ? 'flex-row-reverse 2xl:gap-10' : '2xl:gap-20'}`}>
-            <div className={`ml-10 flex items-baseline space-x-8 ${isRTL ? 'ml-0 mr-10 space-x-reverse' : ''}`}>
+            <div className={`ml-10 flex items-baseline space-x-8 ${isRTL ? 'ml-0 mr-10 space-x-reverse flex-row-reverse space-x-8' : ''}`}>
               {navItems.map((item) => (
                 <div
                   key={item.name}
