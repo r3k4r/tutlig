@@ -5,9 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import Language from './Language'
-
+import { useTranslation } from 'react-i18next'
 
 export default function Navbar (){
+  const { t } = useTranslation()
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isRTL, setIsRTL] = useState(false)
@@ -35,54 +36,54 @@ export default function Navbar (){
 
   const navItems = [
     {
-      name: "Home",
+      name: t('nav.home'),
       href: "/",
       dropdown: null,
     },
     {
-      name: "ESL resources ",
+      name: t('nav.eslResources'),
       href: "/eslresources ",
       dropdown: [
-        { name: "Short Story", href: "/shortstory" },
-        { name: "Blog", href: "/blogs" },
-        { name: "Video", href: "/Video" },
-        { name: "authentic material", href: "/authenticmaterial" },
+        { name: t('nav.shortStory'), href: "/shortstory" },
+        { name: t('nav.blog'), href: "/blogs" },
+        { name: t('nav.video'), href: "/Video" },
+        { name: t('nav.authenticMaterial'), href: "/authenticmaterial" },
       ],
     },
     {
-      name: "Courses",
+      name: t('nav.courses'),
       href: "/courses",
       dropdown: [
-        { name: "General English", href: "/generalenglish" },
-        { name: "Academic English", href: "/academicenglish" },
-        { name: "Language Preparation Test", href: "/languagepreparationtest" },
-        { name: "ESP", href: "/esp" },
-        { name: "Business English", href: "/businessenglish" },
-        { name: "Entrepreneurship", href: "/entrepreneurship" },
+        { name: t('nav.generalEnglish'), href: "/generalenglish" },
+        { name: t('nav.academicEnglish'), href: "/academicenglish" },
+        { name: t('nav.languagePreparationTest'), href: "/languagepreparationtest" },
+        { name: t('nav.esp'), href: "/esp" },
+        { name: t('nav.businessEnglish'), href: "/businessenglish" },
+        { name: t('nav.entrepreneurship'), href: "/entrepreneurship" },
       ],
     },
      {
-      name: "Services",
+      name: t('nav.services'),
       href: "/services",
       dropdown: [
-        { name: "Group VIP Classes", href: "/vipclasses" },
-        { name: "Private Tutoring", href: "/privatetouring" },
-        { name: "Virtual Classes", href: "/virtualclasses, " },
-        { name: "Physical Classes", href: "/physicalclasses" },
-        { name: "Corporate Training ", href: "/corporatetraining " }
+        { name: t('nav.groupVipClasses'), href: "/vipclasses" },
+        { name: t('nav.privateTutoring'), href: "/privatetouring" },
+        { name: t('nav.virtualClasses'), href: "/virtualclasses, " },
+        { name: t('nav.physicalClasses'), href: "/physicalclasses" },
+        { name: t('nav.corporateTraining'), href: "/corporatetraining " }
       ],
     },
     {
-      name: "Tutelage Tests ",
+      name: t('nav.tutelageTests'),
       href: "/tutelagetests ",
       dropdown: [
-        { name: "Practice Tests", href: "/practicetests" },
-        { name: "IELTS Preparation", href: "/IELTS-preparation" },
-        { name: "Mock exams", href: "/mockexams" },
+        { name: t('nav.practiceTests'), href: "/practicetests" },
+        { name: t('nav.ieltsPreparation'), href: "/IELTS-preparation" },
+        { name: t('nav.mockExams'), href: "/mockexams" },
       ],
     },
     {
-      name: "Contact",
+      name: t('nav.contact'),
       href: "/contact",
       dropdown: null,
     },
@@ -93,9 +94,9 @@ export default function Navbar (){
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex justify-between items-center h-16 ${isRTL ? 'flex-row-reverse' : ''}`}>
           {/* Logo */}
-          <div className={`flex-shrink-0 flex items-center space-x-4 md:space-x-10 ${isRTL ? 'space-x-reverse' : ''}`}>
+          <div className={`flex-shrink-0 flex items-center space-x-4 md:space-x-10 ${isRTL ? 'space-x-reverse flex-row-reverse gap-6' : ''}`}>
             <motion.div whileHover={{ scale: 1.05 }} className="text-yellow-400 font-bold text-lg md:text-xl">
-              <div className={`flex items-center space-x-2 md:space-x-4 ${isRTL ? 'space-x-reverse' : ''}`}>
+              <div className={`flex items-center space-x-2 md:space-x-4 ${isRTL ? 'space-x-reverse flex-row-reverse gap-2' : ''}`}>
                   <Image src={'/logo.png'} className='w-[35px] h-[35px] md:w-[40px] md:h-[40px]' alt='logo' width={40} height={40} />
                   <h3 className="font-bold text-white">Tutelage</h3>
               </div>
@@ -115,7 +116,7 @@ export default function Navbar (){
           </div>
 
           {/* Desktop Navigation */}
-          <div className={`hidden xl:flex xl:items-center xl:justify-between xl:gap-10 2xl:gap-20 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`hidden xl:flex xl:items-center xl:justify-between xl:gap-10  ${isRTL ? 'flex-row-reverse 2xl:gap-10' : '2xl:gap-20'}`}>
             <div className={`ml-10 flex items-baseline space-x-8 ${isRTL ? 'ml-0 mr-10 space-x-reverse' : ''}`}>
               {navItems.map((item) => (
                 <div

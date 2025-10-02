@@ -1,6 +1,5 @@
 "use client"
 
-
 import { NewsSlider } from "@/components/NewsSlider"
 import { AboutUsSection } from "@/components/AboutUsSection"
 import { ServicesSection } from "@/components/ServicesSection"
