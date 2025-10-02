@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail,  } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -8,6 +8,28 @@ import Image from 'next/image'
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const [isRTL, setIsRTL] = useState(false)
+
+  // Check for RTL direction changes
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          setIsRTL(document.body.classList.contains('rtl'))
+        }
+      })
+    })
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+
+    // Initial check
+    setIsRTL(document.body.classList.contains('rtl'))
+
+    return () => observer.disconnect()
+  }, [])
 
   const quickLinks = [
     { name: "Home", href: "/" },
@@ -42,16 +64,17 @@ export const Footer = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
+                className={isRTL ? 'text-right' : 'text-left'}
               >
-                <div className='flex items-center space-x-4 mb-4'>
+                <div className={`flex items-center mb-4 ${isRTL ? 'flex-row-reverse space-x-reverse space-x-4' : 'space-x-4'}`}>
                   <Image className='mb-2' src={'/logo.png'} alt='logo' width={56} height={56} />
                   <h3 className="text-2xl sm:text-3xl font-bold text-white">Tutelage</h3>
                 </div>
-                <p className="text-gray-400 mb-6 leading-relaxed text-sm sm:text-base max-w-xs">
+                <p className={`text-gray-400 mb-6 leading-relaxed text-sm sm:text-base max-w-xs ${isRTL ? 'text-right' : 'text-left'}`}>
                   Empowering students worldwide with innovative English learning solutions.<br />Join thousands who have achieved their language goals with us.
                 </p>
                 {/* Social Media Links */}
-                <div className="flex space-x-3 mt-2">
+                <div className={`flex mt-2 ${isRTL ? 'flex-row-reverse space-x-reverse space-x-3' : 'space-x-3'}`}>
                   {socialLinks.map((social) => (
                     <motion.a
                       key={social.name}
@@ -99,6 +122,7 @@ export const Footer = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
+                className={isRTL ? 'text-right' : 'text-left'}
               >
                 <h4 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">Popular Courses</h4>
                 <ul className="space-y-3">
@@ -106,7 +130,7 @@ export const Footer = () => {
                     <li key={course.name}>
                       <motion.a
                         href={course.href}
-                        whileHover={{ x: 4 }}
+                        whileHover={{ x: isRTL ? -4 : 4 }}
                         className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base"
                       >
                         {course.name}
@@ -123,19 +147,20 @@ export const Footer = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
+                className={isRTL ? 'text-right' : 'text-left'}
               >
                 <h4 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">Contact Us</h4>
                 <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
+                  <div className={`flex items-start ${isRTL ? 'flex-row-reverse space-x-reverse space-x-3' : 'space-x-3'}`}>
                     <MapPin className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" />
-                    <div>
+                    <div className={isRTL ? 'text-right' : 'text-left'}>
                       <p className="text-gray-300 text-sm sm:text-base">Suli Innovation house</p>
                       <p className="text-gray-300 text-sm sm:text-base">Sulaimaniyah - Kurdistan Region</p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3">
+                  <div className={`flex items-center ${isRTL ? 'flex-row-reverse space-x-reverse space-x-3' : 'space-x-3'}`}>
                     <Phone className="w-5 h-5 text-yellow-400 flex-shrink-0" />
-                    <div className="flex flex-col">
+                    <div className={`flex flex-col ${isRTL ? 'text-right' : 'text-left'}`}>
                       <a
                         href="tel:+9647501534240"
                         className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base"
@@ -150,7 +175,7 @@ export const Footer = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3">
+                  <div className={`flex items-center ${isRTL ? 'flex-row-reverse space-x-reverse space-x-3' : 'space-x-3'}`}>
                     <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0" />
                     <a
                       href="mailto:Info@tutelage.krd"
@@ -163,7 +188,7 @@ export const Footer = () => {
                 {/* Office Hours */}
                 <div className="mt-6">
                   <h5 className="text-base sm:text-lg font-medium text-white mb-3">Office Hours</h5>
-                  <div className="text-gray-300 text-sm sm:text-base space-y-1">
+                  <div className={`text-gray-300 text-sm sm:text-base space-y-1 ${isRTL ? 'text-right' : 'text-left'}`}>
                     <p>Sunday : 1:00 PM - 5:00 PM</p>
                     <p>Tuesday: 1:00 PM - 5:00 PM</p>
                     <p>Thursday: 1:00 PM - 5:00 PM</p>
@@ -176,12 +201,12 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 py-5 sm:py-7">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+          <div className={`flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="text-gray-500 text-xs sm:text-sm text-center md:text-left"
+              className={`text-gray-500 text-xs sm:text-sm text-center ${isRTL ? 'md:text-right' : 'md:text-left'}`}
             >
               © {currentYear} Tutelage. All rights reserved.
             </motion.p>
@@ -189,7 +214,7 @@ export const Footer = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-xs sm:text-sm"
+              className={`flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm ${isRTL ? 'md:justify-start' : 'md:justify-end'}`}
             >
               <Link href="/privacy" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
                 Privacy Policy

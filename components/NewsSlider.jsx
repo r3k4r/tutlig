@@ -11,8 +11,30 @@ export const NewsSlider = () => {
   const [direction, setDirection] = useState(1) 
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [isDragging, setIsDragging] = useState(false)
+  const [isRTL, setIsRTL] = useState(false)
   const intervalRef = useRef(null)
   const x = useMotionValue(0)
+
+  // Check for RTL direction changes
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          setIsRTL(document.body.classList.contains('rtl'))
+        }
+      })
+    })
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+
+    // Initial check
+    setIsRTL(document.body.classList.contains('rtl'))
+
+    return () => observer.disconnect()
+  }, [])
 
   const newsItems = [
     {
@@ -76,12 +98,20 @@ export const NewsSlider = () => {
     setIsDragging(false)
     const threshold = 50
 
-    if (info.offset.x > threshold) {
-      // Dragged right - go to previous slide
-      setCurrentSlide((prev) => (prev === 0 ? newsItems.length - 1 : prev - 1))
-    } else if (info.offset.x < -threshold) {
-      // Dragged left - go to next slide
-      setCurrentSlide((prev) => (prev + 1) % newsItems.length)
+    if (isRTL) {
+      // RTL: Dragged left - go to previous slide, right - go to next slide
+      if (info.offset.x < -threshold) {
+        setCurrentSlide((prev) => (prev === 0 ? newsItems.length - 1 : prev - 1))
+      } else if (info.offset.x > threshold) {
+        setCurrentSlide((prev) => (prev + 1) % newsItems.length)
+      }
+    } else {
+      // LTR: Dragged right - go to previous slide, left - go to next slide
+      if (info.offset.x > threshold) {
+        setCurrentSlide((prev) => (prev === 0 ? newsItems.length - 1 : prev - 1))
+      } else if (info.offset.x < -threshold) {
+        setCurrentSlide((prev) => (prev + 1) % newsItems.length)
+      }
     }
   }
 
@@ -108,9 +138,9 @@ export const NewsSlider = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, x: direction === 1 ? 300 : -300 }}
+            initial={{ opacity: 0, x: (direction === 1 ? (isRTL ? -300 : 300) : (isRTL ? 300 : -300)) }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: direction === 1 ? -300 : 300 }}
+            exit={{ opacity: 0, x: (direction === 1 ? (isRTL ? 300 : -300) : (isRTL ? -300 : 300)) }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="absolute inset-0"
             drag="x"
@@ -132,7 +162,7 @@ export const NewsSlider = () => {
               />
               <div className="absolute inset-0 bg-black/50" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white max-w-4xl px-4 sm:px-6">
+                <div className={`text-center text-white max-w-4xl px-4 sm:px-6`}>
                   <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -167,15 +197,15 @@ export const NewsSlider = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-200 hover:scale-110"
+        className={`absolute top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-200 hover:scale-110 ${isRTL ? 'right-2 sm:right-4' : 'left-2 sm:left-4'}`}
       >
-        <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
+        {isRTL ? <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" /> : <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />}
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-200 hover:scale-110"
+        className={`absolute top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-200 hover:scale-110 ${isRTL ? 'left-2 sm:left-4' : 'right-2 sm:right-4'}`}
       >
-        <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
+        {isRTL ? <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" /> : <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />}
       </button>
 
       {/* Circular Dots Navigation */}

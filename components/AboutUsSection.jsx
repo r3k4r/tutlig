@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { BookOpen, Globe, Award, Target } from 'lucide-react'
 
@@ -8,6 +8,28 @@ import { BookOpen, Globe, Award, Target } from 'lucide-react'
 
 export const AboutUsSection = () => {
   const [activeTimeline, setActiveTimeline] = useState(0)
+  const [isRTL, setIsRTL] = useState(false)
+
+  // Check for RTL direction changes
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          setIsRTL(document.body.classList.contains('rtl'))
+        }
+      })
+    })
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+
+    // Initial check
+    setIsRTL(document.body.classList.contains('rtl'))
+
+    return () => observer.disconnect()
+  }, [])
 
   const timelineItems = [
     {
@@ -43,9 +65,9 @@ export const AboutUsSection = () => {
     <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-32 h-32 border-2 border-yellow-400 rounded-full"></div>
-        <div className="absolute bottom-20 right-10 w-24 h-24 border-2 border-black rounded-full"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-yellow-400 rounded-full"></div>
+        <div className={`absolute top-20 w-32 h-32 border-2 border-yellow-400 rounded-full ${isRTL ? 'right-10' : 'left-10'}`}></div>
+        <div className={`absolute bottom-20 w-24 h-24 border-2 border-black rounded-full ${isRTL ? 'left-10' : 'right-10'}`}></div>
+        <div className={`absolute top-1/2 w-16 h-16 bg-yellow-400 rounded-full ${isRTL ? 'right-1/4' : 'left-1/4'}`}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -69,13 +91,13 @@ export const AboutUsSection = () => {
         </div>
 
         {/* Interactive Timeline */}
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div className={`grid lg:grid-cols-2 gap-8 sm:gap-12 items-center ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
           {/* Timeline Navigation */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className={`space-y-4 sm:space-y-6 ${isRTL ? 'lg:col-start-2' : ''}`}>
             {timelineItems.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`cursor-pointer p-4 sm:p-6 rounded-2xl border-2 transition-all duration-300 ${
@@ -86,7 +108,7 @@ export const AboutUsSection = () => {
                 onClick={() => setActiveTimeline(index)}
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="flex items-center space-x-3 sm:space-x-4">
+                <div className={`flex items-center space-x-3 sm:space-x-4 ${isRTL ? 'space-x-reverse' : ''}`}>
                   <div
                     className={`p-2 sm:p-3 rounded-full ${
                       activeTimeline === index ? "bg-yellow-400 text-black" : "bg-gray-100 text-gray-600"
@@ -95,7 +117,7 @@ export const AboutUsSection = () => {
                     {item.icon}
                   </div>
                   <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 mb-2">
+                    <div className={`flex flex-col sm:flex-row sm:items-center sm:space-x-3 mb-2 ${isRTL ? 'sm:space-x-reverse' : ''}`}>
                       {item.year && <span className="text-xl sm:text-2xl font-bold text-yellow-600">{item.year}</span>}
                       <h3 className="text-lg sm:text-xl font-semibold text-black">{item.title}</h3>
                     </div>
@@ -107,7 +129,7 @@ export const AboutUsSection = () => {
           </div>
 
           {/* Visual Content */}
-          <div className="relative">
+          <div className={`relative ${isRTL ? 'lg:col-start-1' : ''}`}>
             <motion.div
               key={activeTimeline}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -116,7 +138,7 @@ export const AboutUsSection = () => {
               className="relative"
             >
               <div className="bg-black rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400 rounded-full -translate-y-16 translate-x-16 opacity-20"></div>
+                <div className={`absolute top-0 w-32 h-32 bg-yellow-400 rounded-full -translate-y-16 opacity-20 ${isRTL ? 'left-0 -translate-x-16' : 'right-0 translate-x-16'}`}></div>
                 <div className="relative z-10">
                   <div className="text-4xl sm:text-6xl font-bold text-yellow-400 mb-4">
                     {timelineItems[activeTimeline].year}
