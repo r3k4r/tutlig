@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Target, Users, Globe, Heart, Zap, BookOpen } from 'lucide-react'
-
+import { useTranslation } from 'react-i18next'
 
 export const ServicesSection = () => {
+  const { t } = useTranslation()
   const [hoveredService, setHoveredService] = useState(null)
   const [isRTL, setIsRTL] = useState(false)
 
@@ -33,50 +34,50 @@ export const ServicesSection = () => {
   const services = [
     {
       id: 1,
-      title: "IELTS & TOEFL Prep",
-      description: "Comprehensive test preparation with proven strategies and expert guidance.",
+      title: t('services.ieltsTitle'),
+      description: t('services.ieltsDescription'),
       icon: <Target className="w-8 h-8" />,
-      features: ["Mock Tests", "Score Prediction", "Personal Coaching", "Study Materials"],
+      features: [t('services.ieltsFeature1'), t('services.ieltsFeature2'), t('services.ieltsFeature3'), t('services.ieltsFeature4')],
       color: "from-yellow-400 to-yellow-600",
     },
     {
       id: 2,
-      title: "Business English",
-      description: "Professional communication skills for corporate success and career advancement.",
+      title: t('services.businessTitle'),
+      description: t('services.businessDescription'),
       icon: <Users className="w-8 h-8" />,
-      features: ["Presentation Skills", "Email Writing", "Meeting Facilitation", "Negotiation"],
+      features: [t('services.businessFeature1'), t('services.businessFeature2'), t('services.businessFeature3'), t('services.businessFeature4')],
       color: "from-black to-gray-800",
     },
     {
       id: 3,
-      title: "Online Learning",
-      description: "Flexible, interactive courses accessible from anywhere in the world.",
+      title: t('services.onlineTitle'),
+      description: t('services.onlineDescription'),
       icon: <Globe className="w-8 h-8" />,
-      features: ["Live Sessions", "Recorded Lessons", "Interactive Exercises", "Progress Tracking"],
+      features: [t('services.onlineFeature1'), t('services.onlineFeature2'), t('services.onlineFeature3'), t('services.onlineFeature4')],
       color: "from-yellow-500 to-yellow-700",
     },
     {
       id: 4,
-      title: "Private Tutoring",
-      description: "One-on-one personalized instruction tailored to your specific needs.",
+      title: t('services.privateTitle'),
+      description: t('services.privateDescription'),
       icon: <Heart className="w-8 h-8" />,
-      features: ["Custom Curriculum", "Flexible Schedule", "Personal Attention", "Rapid Progress"],
+      features: [t('services.privateFeature1'), t('services.privateFeature2'), t('services.privateFeature3'), t('services.privateFeature4')],
       color: "from-gray-700 to-black",
     },
     {
       id: 5,
-      title: "Intensive Courses",
-      description: "Accelerated learning programs for rapid English proficiency improvement.",
+      title: t('services.intensiveTitle'),
+      description: t('services.intensiveDescription'),
       icon: <Zap className="w-8 h-8" />,
-      features: ["Fast-Track Learning", "Immersive Experience", "Daily Practice", "Quick Results"],
+      features: [t('services.intensiveFeature1'), t('services.intensiveFeature2'), t('services.intensiveFeature3'), t('services.intensiveFeature4')],
       color: "from-yellow-600 to-yellow-800",
     },
     {
       id: 6,
-      title: "Academic Writing",
-      description: "Master academic writing skills for university success and research excellence.",
+      title: t('services.academicTitle'),
+      description: t('services.academicDescription'),
       icon: <BookOpen className="w-8 h-8" />,
-      features: ["Essay Structure", "Research Methods", "Citation Styles", "Thesis Writing"],
+      features: [t('services.academicFeature1'), t('services.academicFeature2'), t('services.academicFeature3'), t('services.academicFeature4')],
       color: "from-gray-800 to-black",
     },
   ]
@@ -98,7 +99,7 @@ export const ServicesSection = () => {
             transition={{ duration: 0.6 }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6"
           >
-            Our Services
+            {t('services.title')}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -106,8 +107,7 @@ export const ServicesSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            Discover our comprehensive range of English learning services designed to meet every student&apos;s unique needs
-            and goals.
+            {t('services.subtitle')}
           </motion.p>
         </div>
 
@@ -158,7 +158,7 @@ export const ServicesSection = () => {
                           x: hoveredService === service.id ? 0 : (isRTL ? 10 : -10),
                         }}
                         transition={{ delay: featureIndex * 0.1 }}
-                        className={`flex items-center ${isRTL ? 'flex-row-reverse space-x-reverse space-x-3 text-right' : 'space-x-3 text-left'}`}
+                        className={`flex items-center ${isRTL ? 'flex-row-reverse space-x-3 text-right' : 'space-x-3 text-left'}`}
                       >
                         <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                         <span className="text-xs sm:text-sm text-gray-700">{feature}</span>
@@ -186,7 +186,7 @@ export const ServicesSection = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-yellow-400 text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-yellow-300 transition-colors duration-300 shadow-lg hover:shadow-xl"
           >
-            Explore All Services
+            {t('services.exploreButton')}
           </motion.button>
         </motion.div>
       </div>

@@ -1,10 +1,35 @@
-
 'use client'
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const StaffMarqueeSection = () => {
+  const { t } = useTranslation()
+  const [isRTL, setIsRTL] = useState(false)
+
+  // Check for RTL direction changes
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          setIsRTL(document.body.classList.contains('rtl'))
+        }
+      })
+    })
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+
+    // Initial check
+    setIsRTL(document.body.classList.contains('rtl'))
+
+    return () => observer.disconnect()
+  }, [])
+
   const sponsors = [
     { id: 1, image: '/fol.png', alt: 'FOL Sponsor' },
     { id: 2, image: '/itt.png', alt: 'ITTT Sponsor' },
@@ -25,19 +50,18 @@ export const StaffMarqueeSection = () => {
       <div className="w-full">
         <div className="text-center mb-8 sm:mb-12 mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-4">
-            Our Trusted Sponsors
+            {t('staffMarquee.title')}
           </h2>
           <p className="text-lg sm:text-xl text-gray-600">
-            We are proud to be supported by these leading organizations
+            {t('staffMarquee.subtitle')}
           </p>
         </div>
         <div className="items-center max-w-7xl mx-auto overflow-hidden relative group">
-          {/* Left fade */}
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-16 z-10" style={{background: 'linear-gradient(to right, white 70%, transparent)'}} />
-          {/* Right fade */}
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-16 z-10" style={{background: 'linear-gradient(to left, white 70%, transparent)'}} />
+          {/* Left/Right fade based on RTL */}
+          <div className={`pointer-events-none absolute top-0 h-full w-16 z-10 ${isRTL ? 'right-0' : 'left-0'}`} style={{background: isRTL ? 'linear-gradient(to left, white 70%, transparent)' : 'linear-gradient(to right, white 70%, transparent)'}} />
+          <div className={`pointer-events-none absolute top-0 h-full w-16 z-10 ${isRTL ? 'left-0' : 'right-0'}`} style={{background: isRTL ? 'linear-gradient(to right, white 70%, transparent)' : 'linear-gradient(to left, white 70%, transparent)'}} />
           <div
-            className="flex py-6 w-max animate-marquee gap-8"
+            className={`flex py-6 w-max gap-8 ${isRTL ? 'animate-marquee-rtl' : 'animate-marquee'}`}
             style={{ animationPlayState: 'running' }}
             onMouseEnter={e => { e.currentTarget.style.animationPlayState = 'paused' }}
             onMouseLeave={e => { e.currentTarget.style.animationPlayState = 'running' }}

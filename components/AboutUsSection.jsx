@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { BookOpen, Globe, Award, Target } from 'lucide-react'
-
-
+import { useTranslation } from 'react-i18next'
 
 export const AboutUsSection = () => {
+  const { t } = useTranslation()
   const [activeTimeline, setActiveTimeline] = useState(0)
   const [isRTL, setIsRTL] = useState(false)
 
@@ -33,30 +33,27 @@ export const AboutUsSection = () => {
 
   const timelineItems = [
     {
-      year: "2022",
-      title: "Foundation",
-      description:
-        "Tutelage was established with a vision to revolutionize English learning through innovative teaching methods.",
+      year: t('aboutUs.timeline1Year'),
+      title: t('aboutUs.timeline1Title'),
+      description: t('aboutUs.timeline1Description'),
       icon: <BookOpen className="w-6 h-6" />,
     },
     {
       year: "",
-      title: "Innovation",
-      description:
-        "Tutelage is the first Language institute to implement a full scale AI tool for students.",
+      title: t('aboutUs.timeline2Title'),
+      description: t('aboutUs.timeline2Description'),
       icon: <Globe className="w-6 h-6" />,
     },
     {
       year: "",
-      title: "Expansion",
-      description: "Tutelage hired many local talents and fresh graduates with a focus on creative female instructors.",
+      title: t('aboutUs.timeline3Title'),
+      description: t('aboutUs.timeline3Description'),
       icon: <Award className="w-6 h-6" />,
     },
     {
       year: "",
-      title: "Building Reputation",
-      description:
-        "Tutelage is among the most reputable language institutes with a massive success rate.",
+      title: t('aboutUs.timeline4Title'),
+      description: t('aboutUs.timeline4Description'),
       icon: <Target className="w-6 h-6" />,
     },
   ]
@@ -78,7 +75,7 @@ export const AboutUsSection = () => {
             transition={{ duration: 0.6 }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 sm:mb-6"
           >
-            Pioneers of Excellence
+            {t('aboutUs.title')}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -86,7 +83,7 @@ export const AboutUsSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto"
           >
-            Join Tutelage and let your language skills become your super power
+            {t('aboutUs.subtitle')}
           </motion.p>
         </div>
 
@@ -108,7 +105,7 @@ export const AboutUsSection = () => {
                 onClick={() => setActiveTimeline(index)}
                 whileHover={{ scale: 1.02 }}
               >
-                <div className={`flex items-center space-x-3 sm:space-x-4 ${isRTL ? 'space-x-reverse' : ''}`}>
+                <div className={`flex items-center ${isRTL ? 'flex-row-reverse space-x-3 sm:space-x-4' : 'space-x-3 sm:space-x-4'}`}>
                   <div
                     className={`p-2 sm:p-3 rounded-full ${
                       activeTimeline === index ? "bg-yellow-400 text-black" : "bg-gray-100 text-gray-600"
@@ -117,11 +114,11 @@ export const AboutUsSection = () => {
                     {item.icon}
                   </div>
                   <div className="flex-1">
-                    <div className={`flex flex-col sm:flex-row sm:items-center sm:space-x-3 mb-2 ${isRTL ? 'sm:space-x-reverse' : ''}`}>
+                    <div className={`flex flex-col sm:flex-row sm:items-center mb-2 ${isRTL ? 'sm:flex-row-reverse sm:space-x-3' : 'sm:space-x-3'}`}>
                       {item.year && <span className="text-xl sm:text-2xl font-bold text-yellow-600">{item.year}</span>}
                       <h3 className="text-lg sm:text-xl font-semibold text-black">{item.title}</h3>
                     </div>
-                    <p className="text-sm sm:text-base text-gray-600">{item.description}</p>
+                    <p className={`text-sm sm:text-base text-gray-600 ${isRTL ? 'text-right' : 'text-left'}`}>{item.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -157,15 +154,15 @@ export const AboutUsSection = () => {
                 whileHover={{ scale: 1.05 }}
                 className="bg-white p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-100"
               >
-                <div className="text-2xl sm:text-3xl font-bold text-yellow-600 mb-2">3000+</div>
-                <div className="text-sm sm:text-base text-gray-600">Students</div>
+                <div className="text-2xl sm:text-3xl font-bold text-yellow-600 mb-2">{t('aboutUs.studentsCount')}</div>
+                <div className="text-sm sm:text-base text-gray-600">{t('aboutUs.studentsLabel')}</div>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="bg-white p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-100"
               >
-                <div className="text-2xl sm:text-3xl font-bold text-yellow-600 mb-2">95%</div>
-                <div className="text-sm sm:text-base text-gray-600">Success Rate</div>
+                <div className="text-2xl sm:text-3xl font-bold text-yellow-600 mb-2">{t('aboutUs.successRateCount')}</div>
+                <div className="text-sm sm:text-base text-gray-600">{t('aboutUs.successRateLabel')}</div>
               </motion.div>
             </div>
           </div>

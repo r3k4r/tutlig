@@ -5,8 +5,10 @@ import Link from 'next/link'
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail,  } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useTranslation } from 'react-i18next'
 
 export const Footer = () => {
+  const { t } = useTranslation()
   const currentYear = new Date().getFullYear()
   const [isRTL, setIsRTL] = useState(false)
 
@@ -40,11 +42,11 @@ export const Footer = () => {
   ]
 
   const courses = [
-    { name: "General English", href: "/generalenglish" },
-    { name: "Academic English", href: "/academicenglish" },
-    { name: "Business English", href: "/businessbnglish" },
-    { name: "Preparation Test", href: "/preparationtest" },
-    { name: "ESP", href: "/esp" },
+    { name: t('nav.generalEnglish'), href: "/generalenglish" },
+    { name: t('nav.academicEnglish'), href: "/academicenglish" },
+    { name: t('nav.businessEnglish'), href: "/businessbnglish" },
+    { name: t('nav.ieltsPreparation'), href: "/preparationtest" },
+    { name: t('nav.esp'), href: "/esp" },
   ]
 
   const socialLinks = [
@@ -68,10 +70,10 @@ export const Footer = () => {
               >
                 <div className={`flex items-center mb-4 ${isRTL ? 'flex-row-reverse space-x-reverse space-x-4' : 'space-x-4'}`}>
                   <Image className='mb-2' src={'/logo.png'} alt='logo' width={56} height={56} />
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white">Tutelage</h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white">{t('nav.tutelage')}</h3>
                 </div>
                 <p className={`text-gray-400 mb-6 leading-relaxed text-sm sm:text-base max-w-xs ${isRTL ? 'text-right' : 'text-left'}`}>
-                  Empowering students worldwide with innovative English learning solutions.<br />Join thousands who have achieved their language goals with us.
+                  {t('footer.description')}
                 </p>
                 {/* Social Media Links */}
                 <div className={`flex mt-2 ${isRTL ? 'flex-row-reverse space-x-reverse space-x-3' : 'space-x-3'}`}>
@@ -124,7 +126,7 @@ export const Footer = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className={isRTL ? 'text-right' : 'text-left'}
               >
-                <h4 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">Popular Courses</h4>
+                <h4 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">{t('footer.popularCourses')}</h4>
                 <ul className="space-y-3">
                   {courses.map((course) => (
                     <li key={course.name}>
@@ -149,13 +151,13 @@ export const Footer = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className={isRTL ? 'text-right' : 'text-left'}
               >
-                <h4 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">Contact Us</h4>
+                <h4 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">{t('footer.contactUs')}</h4>
                 <div className="space-y-4">
                   <div className={`flex items-start ${isRTL ? 'flex-row-reverse space-x-reverse space-x-3' : 'space-x-3'}`}>
                     <MapPin className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" />
                     <div className={isRTL ? 'text-right' : 'text-left'}>
-                      <p className="text-gray-300 text-sm sm:text-base">Suli Innovation house</p>
-                      <p className="text-gray-300 text-sm sm:text-base">Sulaimaniyah - Kurdistan Region</p>
+                      <p className="text-gray-300 text-sm sm:text-base">{t('footer.address1')}</p>
+                      <p className="text-gray-300 text-sm sm:text-base">{t('footer.address2')}</p>
                     </div>
                   </div>
                   <div className={`flex items-center ${isRTL ? 'flex-row-reverse space-x-reverse space-x-3' : 'space-x-3'}`}>
@@ -187,11 +189,11 @@ export const Footer = () => {
                 </div>
                 {/* Office Hours */}
                 <div className="mt-6">
-                  <h5 className="text-base sm:text-lg font-medium text-white mb-3">Office Hours</h5>
+                  <h5 className="text-base sm:text-lg font-medium text-white mb-3">{t('footer.officeHours')}</h5>
                   <div className={`text-gray-300 text-sm sm:text-base space-y-1 ${isRTL ? 'text-right' : 'text-left'}`}>
-                    <p>Sunday : 1:00 PM - 5:00 PM</p>
-                    <p>Tuesday: 1:00 PM - 5:00 PM</p>
-                    <p>Thursday: 1:00 PM - 5:00 PM</p>
+                    <p>{t('footer.sunday')}</p>
+                    <p>{t('footer.tuesday')}</p>
+                    <p>{t('footer.thursday')}</p>
                   </div>
                 </div>
               </motion.div>
@@ -208,7 +210,7 @@ export const Footer = () => {
               transition={{ duration: 0.6 }}
               className={`text-gray-500 text-xs sm:text-sm text-center ${isRTL ? 'md:text-right' : 'md:text-left'}`}
             >
-              © {currentYear} Tutelage. All rights reserved.
+              © {currentYear} {t('nav.tutelage')}. {t('footer.copyright')}
             </motion.p>
             <motion.div
               initial={{ opacity: 0 }}
@@ -217,13 +219,13 @@ export const Footer = () => {
               className={`flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm ${isRTL ? 'md:justify-start' : 'md:justify-end'}`}
             >
               <Link href="/privacy" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
-                Privacy Policy
+                {t('footer.privacyPolicy')}
               </Link>
               <Link href="/terms" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
-                Terms of Service
+                {t('footer.termsOfService')}
               </Link>
               <Link href="/cookies" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
-                Cookie Policy
+                {t('footer.cookiePolicy')}
               </Link>
             </motion.div>
           </div>

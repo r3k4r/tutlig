@@ -4,9 +4,10 @@ import  { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence, useMotionValue } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-
+import { useTranslation } from 'react-i18next'
 
 export const NewsSlider = () => {
+  const { t } = useTranslation()
   const [currentSlide, setCurrentSlide] = useState(0)
   const [direction, setDirection] = useState(1) 
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
@@ -39,39 +40,38 @@ export const NewsSlider = () => {
   const newsItems = [
     {
       id: 1,
-      title: "Tutelage collaborated with TESOL Spain one of the most well-known International TESOL Associations",
-      description: "Tutelage is proud to announce our collaboration with TESOL Spain, enhancing our commitment to providing top-notch English language education.",
+      title: t('hero.slide1Title'),
+      description: t('hero.slide1Description'),
       image: "https://www.21kschool.com/gh/wp-content/uploads/sites/33/2022/09/12-Advantages-to-Learning-Online.jpg",
-      date: "June 15, 2025",
+      date: t('hero.slide1Date'),
     },
     {
       id: 2,
-      title: "Register now for this month’s VIP group classes",
-      description:
-        "Join our exclusive VIP group classes this month to experience personalized English learning with expert instructors.",
+      title: t('hero.slide2Title'),
+      description: t('hero.slide2Description'),
       image: "https://yeira-panel.s3.amazonaws.com/posts/March2023/Bh0ilVMZUzUxEXJECgks.png",
-      date: "July 10, 2025",
+      date: t('hero.slide2Date'),
     },
     {
       id: 3,
-      title: "Your personalized AI tutor is here to help",
-      description: "Experience the future of learning with our AI-powered personalized tutor, designed to enhance your English language skills.",
+      title: t('hero.slide3Title'),
+      description: t('hero.slide3Description'),
       image: "https://www.shutterstock.com/image-vector/online-learning-home-during-outbreak-260nw-1747453175.jpg",
-      date: "Aug 5, 2025",
+      date: t('hero.slide3Date'),
     },
     {
       id: 4,
-      title: "Tutelage now operates its services both locally and globally",
-      description: "Tutelage expands its reach! We are now offering our English language services both locally and globally, making quality education accessible to everyone.",
+      title: t('hero.slide4Title'),
+      description: t('hero.slide4Description'),
       image: "https://thumbs.dreamstime.com/b/remote-learning-virtual-class-kids-teleconference-online-education-stay-home-watching-female-teacher-book-points-to-flipchart-196343666.jpg",
-      date: "February 28, 2025",
+      date: t('hero.slide4Date'),
     },
     {
       id: 5,
-      title: "Read the success Stories of our talented students",
-      description: "Discover the inspiring success stories of our talented students who have transformed their English language skills with Tutelage.",
+      title: t('hero.slide5Title'),
+      description: t('hero.slide5Description'),
       image: "/news.jpg",
-      date: "February 20, 2025",
+      date: t('hero.slide5Date'),
     },
   ]
 
