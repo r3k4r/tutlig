@@ -105,16 +105,16 @@ export const AboutUsSection = () => {
                 onClick={() => setActiveTimeline(index)}
                 whileHover={{ scale: 1.02 }}
               >
-                <div className={`flex items-center ${isRTL ? 'flex-row-reverse space-x-3 sm:space-x-4' : 'space-x-3 sm:space-x-4'}`}>
+                <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                   <div
                     className={`p-2 sm:p-3 rounded-full ${
                       activeTimeline === index ? "bg-yellow-400 text-black" : "bg-gray-100 text-gray-600"
-                    }`}
+                    } ${isRTL ? 'ml-3 sm:ml-4' : 'mr-3 sm:mr-4'}`}
                   >
                     {item.icon}
                   </div>
-                  <div className="flex-1">
-                    <div className={`flex flex-col sm:flex-row sm:items-center mb-2 ${isRTL ? 'sm:flex-row-reverse sm:space-x-3' : 'sm:space-x-3'}`}>
+                  <div className={`flex-1 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    <div className={`flex flex-col sm:flex-row sm:items-center mb-2 ${isRTL ? 'sm:flex-row-reverse sm:space-x-reverse sm:space-x-3' : 'sm:space-x-3'}`}>
                       {item.year && <span className="text-xl sm:text-2xl font-bold text-yellow-600">{item.year}</span>}
                       <h3 className="text-lg sm:text-xl font-semibold text-black">{item.title}</h3>
                     </div>
@@ -134,7 +134,7 @@ export const AboutUsSection = () => {
               transition={{ duration: 0.5 }}
               className="relative"
             >
-              <div className="bg-black rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden">
+              <div className={`bg-black rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden ${isRTL ? 'text-right' : 'text-left'}`}>
                 <div className={`absolute top-0 w-32 h-32 bg-yellow-400 rounded-full -translate-y-16 opacity-20 ${isRTL ? 'left-0 -translate-x-16' : 'right-0 translate-x-16'}`}></div>
                 <div className="relative z-10">
                   <div className="text-4xl sm:text-6xl font-bold text-yellow-400 mb-4">

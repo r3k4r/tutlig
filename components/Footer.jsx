@@ -68,11 +68,11 @@ export const Footer = () => {
                 transition={{ duration: 0.6 }}
                 className={isRTL ? 'text-right' : 'text-left'}
               >
-                <div className={`flex items-center mb-4 ${isRTL ? 'flex-row-reverse space-x-reverse space-x-4' : 'space-x-4'}`}>
+                <div className={`flex items-center mb-4 w-full ${isRTL ? 'flex-row-reverse space-x-reverse space-x-4' : 'space-x-4'}`}>
                   <Image className='mb-2' src={'/logo.png'} alt='logo' width={56} height={56} />
                   <h3 className="text-2xl sm:text-3xl font-bold text-white">{t('nav.tutelage')}</h3>
                 </div>
-                <p className={`text-gray-400 mb-6 leading-relaxed text-sm sm:text-base max-w-xs ${isRTL ? 'text-right' : 'text-left'}`}>
+                <p className={`text-gray-400 w-full mb-6 leading-relaxed text-sm sm:text-base ${isRTL ? 'text-right' : 'text-left'}`}>
                   {t('footer.description')}
                 </p>
                 {/* Social Media Links */}
