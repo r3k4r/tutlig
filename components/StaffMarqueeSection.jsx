@@ -58,10 +58,10 @@ export const StaffMarqueeSection = () => {
         </div>
         <div className="items-center max-w-7xl mx-auto overflow-hidden relative group">
           {/* Left/Right fade based on RTL */}
-          <div className={`pointer-events-none absolute top-0 h-full w-16 z-10 ${isRTL ? 'right-0' : 'left-0'}`} style={{background: isRTL ? 'linear-gradient(to left, white 70%, transparent)' : 'linear-gradient(to right, white 70%, transparent)'}} />
-          <div className={`pointer-events-none absolute top-0 h-full w-16 z-10 ${isRTL ? 'left-0' : 'right-0'}`} style={{background: isRTL ? 'linear-gradient(to right, white 70%, transparent)' : 'linear-gradient(to left, white 70%, transparent)'}} />
+          <div className={`pointer-events-none absolute top-0 h-full w-16 z-10 left-0`} style={{background: 'linear-gradient(to right, white 70%, transparent)'}} />
+          <div className={`pointer-events-none absolute top-0 h-full w-16 z-10 right-0`} style={{background:'linear-gradient(to left, white 70%, transparent)'}} />
           <div
-            className={`flex py-6 w-max gap-8 ${isRTL ? 'animate-marquee-rtl' : 'animate-marquee'}`}
+            className={`flex py-6 w-max gap-8 animate-marquee`}
             style={{ animationPlayState: 'running' }}
             onMouseEnter={e => { e.currentTarget.style.animationPlayState = 'paused' }}
             onMouseLeave={e => { e.currentTarget.style.animationPlayState = 'running' }}
