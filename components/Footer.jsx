@@ -225,7 +225,7 @@ export const Footer = () => {
                 {t('footer.termsOfService')}
               </Link>
               <Link href="/cookies" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200">
-                {t('footer.cookiePolicy')}
+                Cookies
               </Link>
             </motion.div>
           </div>

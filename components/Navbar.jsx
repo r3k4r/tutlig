@@ -177,7 +177,9 @@ export default function Navbar (){
           </div>
 
           {/* Mobile menu button */}
-          <div className="xl:hidden">
+          <div className="xl:hidden flex items-center gap-4">
+            <Language />
+
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
