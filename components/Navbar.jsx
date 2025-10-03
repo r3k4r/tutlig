@@ -94,11 +94,11 @@ export default function Navbar (){
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex justify-between items-center h-16 ${isRTL ? 'flex-row-reverse' : ''}`}>
           {/* Logo */}
-          <div className={`flex-shrink-0 text-sm md:text-base flex items-center md:space-x-10 ${isRTL ? 'space-x-reverse flex-row-reverse gap-6' : ''}`}>
+          <div className={`flex-shrink-0 text-sm md:text-base flex items-center ${isRTL ? 'space-x-reverse flex-row-reverse gap-6' : ''}`}>
             <motion.div whileHover={{ scale: 1.05 }} className="text-yellow-400 font-bold text-lg md:text-xl">
               <div className={`flex items-center space-x-2 md:space-x-4 ${isRTL ? 'space-x-reverse flex-row-reverse gap-2' : ''}`}>
                   <Image src={'/logo.png'} className='w-[35px] h-[35px] md:w-[40px] md:h-[40px]' alt='logo' width={40} height={40} />
-                  <h3 className="font-bold text-white">Tutelage</h3>
+                  <h3 className="hidden sm:block font-bold text-white">Tutelage</h3>
               </div>
             </motion.div>
 
@@ -177,7 +177,7 @@ export default function Navbar (){
           </div>
 
           {/* Mobile menu button */}
-          <div className="xl:hidden flex items-center gap-4">
+          <div className={`xl:hidden flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Language />
 
             <motion.button
