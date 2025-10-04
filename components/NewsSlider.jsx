@@ -39,13 +39,6 @@ export const NewsSlider = () => {
 
   const newsItems = [
     {
-      id: 1,
-      title: t('hero.slide1Title'),
-      description: t('hero.slide1Description'),
-      image: "https://www.21kschool.com/gh/wp-content/uploads/sites/33/2022/09/12-Advantages-to-Learning-Online.jpg",
-      date: t('hero.slide1Date'),
-    },
-    {
       id: 2,
       title: t('hero.slide2Title'),
       description: t('hero.slide2Description'),
@@ -75,24 +68,24 @@ export const NewsSlider = () => {
     },
   ]
 
-  // Auto-scroll functionality
-  useEffect(() => {
-    if (isAutoPlaying && !isDragging) {
-      intervalRef.current = setInterval(() => {
-        setCurrentSlide((prev) => {
-          const nextSlide =
-            direction === 1 ? (prev + 1) % newsItems.length : prev === 0 ? newsItems.length - 1 : prev - 1
-          return nextSlide
-        })
-      }, 4000)
-    }
+  // // Auto-scroll functionality
+  // useEffect(() => {
+  //   if (isAutoPlaying && !isDragging) {
+  //     intervalRef.current = setInterval(() => {
+  //       setCurrentSlide((prev) => {
+  //         const nextSlide =
+  //           direction === 1 ? (prev + 1) % newsItems.length : prev === 0 ? newsItems.length - 1 : prev - 1
+  //         return nextSlide
+  //       })
+  //     }, 4000)
+  //   }
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
-    }
-  }, [isAutoPlaying, isDragging, direction, newsItems.length])
+  //   return () => {
+  //     if (intervalRef.current) {
+  //       clearInterval(intervalRef.current)
+  //     }
+  //   }
+  // }, [isAutoPlaying, isDragging, direction, newsItems.length])
 
   const handleDragEnd = (event, info) => {
     setIsDragging(false)
@@ -138,9 +131,9 @@ export const NewsSlider = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, x: (direction === 1 ? (isRTL ? -300 : 300) : (isRTL ? 300 : -300)) }}
+            initial={{ opacity: 0, x: (direction === 1 ? (300) : (-300)) }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: (direction === 1 ? (isRTL ? 300 : -300) : (isRTL ? -300 : 300)) }}
+            exit={{ opacity: 0, x: (direction === 1 ? (-300) : (300)) }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="absolute inset-0"
             drag="x"
@@ -162,7 +155,7 @@ export const NewsSlider = () => {
               />
               <div className="absolute inset-0 bg-black/50" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className={`text-center text-white max-w-4xl px-4 sm:px-6`}>
+                <div className={`text-center text-white max-w-5xl px-4 sm:px-6`}>
                   <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

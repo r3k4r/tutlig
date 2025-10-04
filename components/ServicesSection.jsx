@@ -158,7 +158,7 @@ export const ServicesSection = () => {
                           x: hoveredService === service.id ? 0 : (isRTL ? 10 : -10),
                         }}
                         transition={{ delay: featureIndex * 0.1 }}
-                        className={`flex items-center ${isRTL ? 'flex-row-reverse space-x-3 text-right' : 'space-x-3 text-left'}`}
+                        className={`flex items-center ${isRTL ? 'flex-row-reverse space-x-3 text-right gap-2' : 'space-x-3 text-left'}`}
                       >
                         <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                         <span className="text-xs sm:text-sm text-gray-700">{feature}</span>
